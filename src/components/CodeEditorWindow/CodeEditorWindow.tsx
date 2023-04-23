@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 import {
   Rules,
@@ -11,7 +11,7 @@ import { Theme } from "./config/Theme";
 import { Autocomplete } from "./config/Autocomplete";
 import { ErrorMarker, errChecker } from "./config/ErrorMarker";
 import { RequestFromCode } from "./config/RequesFromCode";
-import ErrorNotifier from "../ToastNotifications/ErrorNotifier";
+import { ErrorNotifier } from "../ToastNotifications/ErrorNotifier";
 import "./editor.css";
 
 type CodeEditorWindowProps = {
@@ -19,7 +19,7 @@ type CodeEditorWindowProps = {
   code: string;
   onChangeResult: (value: string, code: string) => void;
 };
-const CodeEditorWindow = ({
+export const CodeEditorWindow = ({
   onChange,
   code,
   onChangeResult,
@@ -151,4 +151,3 @@ const CodeEditorWindow = ({
     </>
   );
 };
-export default CodeEditorWindow;

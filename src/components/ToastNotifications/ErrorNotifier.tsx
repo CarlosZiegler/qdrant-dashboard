@@ -14,7 +14,7 @@ function SlideTransition(props: TransitionProps) {
   return <Slide {...props} direction="down" />;
 }
 
-function ErrorNotifier({ message, setHasError }: ErrorNotifierProps) {
+export function ErrorNotifier({ message, setHasError }: ErrorNotifierProps) {
   const [open, setOpen] = useState(true);
 
   const handleClose = (
@@ -29,25 +29,21 @@ function ErrorNotifier({ message, setHasError }: ErrorNotifierProps) {
   };
 
   return (
-    <>
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        disableWindowBlurListener
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        TransitionComponent={SlideTransition}
+    <Snackbar
+      open={open}
+      autoHideDuration={6000}
+      onClose={handleClose}
+      disableWindowBlurListener
+      anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      TransitionComponent={SlideTransition}
+    >
+      <Alert
+        onClose={handleClose as any}
+        severity="error"
+        sx={{ width: "100%" }}
       >
-        <Alert
-          onClose={handleClose as any}
-          severity="error"
-          sx={{ width: "100%" }}
-        >
-          {message}
-        </Alert>
-      </Snackbar>
-    </>
+        {message}
+      </Alert>
+    </Snackbar>
   );
 }
-
-export default ErrorNotifier;

@@ -8,7 +8,7 @@ type MenuProps = {
   code: string;
   handleEditorChange: (value: string, code: string) => void;
 };
-function Menu({ code, handleEditorChange }: MenuProps) {
+export function Menu({ code, handleEditorChange }: MenuProps) {
   const [state, setState] = React.useState({
     history: false,
     savedCode: false,

@@ -12,7 +12,7 @@ type PointDataViewProps = {
   };
 };
 
-function PointDataView({ data }: PointDataViewProps) {
+export function PointDataView({ data }: PointDataViewProps) {
   const Payload = Object.keys(data.payload).map((key) => {
     return (
       <div key={key}>
@@ -71,7 +71,7 @@ function PointDataView({ data }: PointDataViewProps) {
     </>
   );
 }
-const PointCard = (props: PointCardProps) => {
+export const PointCard = (props: PointCardProps) => {
   const { point } = props;
 
   return (
@@ -89,5 +89,3 @@ const PointCard = (props: PointCardProps) => {
     </Card>
   );
 };
-
-export default PointCard;

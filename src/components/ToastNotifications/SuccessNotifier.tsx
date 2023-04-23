@@ -13,7 +13,7 @@ function SlideTransition(props: TransitionProps) {
   return <Slide {...props} direction="down" />;
 }
 
-export default function SuccessNotifier({
+export function SuccessNotifier({
   message,
   setIsSuccess,
 }: SuccessNotifierProps) {

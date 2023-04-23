@@ -7,7 +7,7 @@ type InputWithIconProps = {
   setValue: (value: string) => void;
 };
 
-function InputWithIcon({ value, setValue }: InputWithIconProps) {
+export function SearchBar({ value, setValue }: InputWithIconProps) {
   return (
     <Card sx={{ p: 2 }} elevation={2}>
       <OutlinedInput
@@ -27,5 +27,3 @@ function InputWithIcon({ value, setValue }: InputWithIconProps) {
     </Card>
   );
 }
-
-export default InputWithIcon;

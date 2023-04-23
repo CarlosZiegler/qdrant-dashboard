@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -6,9 +6,10 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useTheme } from "@mui/material/styles";
-import { deleteCollections } from "../../common/client";
-import ErrorNotifier from "../ToastNotifications/ErrorNotifier";
+
+import { ErrorNotifier } from "../ToastNotifications/ErrorNotifier";
 import Box from "@mui/material/Box";
+import { useDeleteCollections } from "../../hooks";
 
 type DeleteDialogProps = {
   open: boolean;
@@ -17,7 +18,7 @@ type DeleteDialogProps = {
   getCollectionsCall: () => void;
 };
 
-export default function DeleteDialog({
+export function DeleteDialog({
   open,
   setOpen,
   collectionName,
@@ -25,12 +26,13 @@ export default function DeleteDialog({
 }: DeleteDialogProps) {
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { mutateAsync } = useDeleteCollections();
 
   const theme = useTheme();
 
   async function callDelete() {
-    const response = await deleteCollections(collectionName);
-    if (response === true) {
+    const response = await mutateAsync(collectionName);
+    if (response.data) {
       getCollectionsCall();
       setOpen(false);
     } else {

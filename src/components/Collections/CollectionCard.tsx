@@ -8,19 +8,18 @@ import {
   Stack,
   CardActionArea,
   Typography,
-  styled,
   Button,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PolylineIcon from "@mui/icons-material/Polyline";
-import DeleteDialog from "./DeleteDialog";
+import { DeleteDialog } from "./DeleteDialog";
 
 type CollectionCardProps = {
   collection: any;
   getCollectionsCall: () => void;
 };
 
-const CollectionCard = (props: CollectionCardProps) => {
+export const CollectionCard = (props: CollectionCardProps) => {
   const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false);
   const { collection, getCollectionsCall } = props;
 
@@ -78,5 +77,3 @@ const CollectionCard = (props: CollectionCardProps) => {
     </>
   );
 };
-
-export default CollectionCard;

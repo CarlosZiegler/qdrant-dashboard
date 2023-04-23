@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import { routes } from "./routes";
-import useTitle from "./components/UseTitle";
+import { useTitle } from "./hooks";
 
 function AppRoutes() {
   useTitle("UI | Qdrant ");
@@ -10,10 +10,6 @@ function AppRoutes() {
 }
 
 function App() {
-  return (
-    <Router>
-      <AppRoutes />
-    </Router>
-  );
+  return <AppRoutes />;
 }
 export default App;

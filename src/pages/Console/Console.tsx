@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import CodeEditorWindow from "../components/CodeEditorWindow";
-import ResultEditorWindow from "../components/ResultEditorWindow";
+import { useState } from "react";
+import { CodeEditorWindow, ResultEditorWindow, Menu } from "../../components";
 import { Box } from "@mui/system";
-import Menu from "../components/CodeEditorWindow/Menu";
 
 const query = `GET collections
 
@@ -23,6 +21,7 @@ DELETE collections/demo1
 GET collections
 
 GET collections/startups`;
+
 const defaultResult = `{"result": {"collections": [{"name": "collection1"},
       {
         "name": "startups"
@@ -33,11 +32,11 @@ const defaultResult = `{"result": {"collections": [{"name": "collection1"},
   "time": 0.000007124
 }`;
 
-function Console() {
+export function Console() {
   const [code, setCode] = useState(query);
   const [result, setResult] = useState(defaultResult);
 
-  const onChangeCode = (action, data) => {
+  const onChangeCode = (action: string, data: string) => {
     switch (action) {
       case "code": {
         setCode(data);
@@ -48,7 +47,7 @@ function Console() {
       }
     }
   };
-  const onChangeResult = (action, data) => {
+  const onChangeResult = (action: string, data: string) => {
     switch (action) {
       case "code": {
         setResult(data);
@@ -94,5 +93,3 @@ function Console() {
     </>
   );
 }
-
-export default Console;

@@ -3,37 +3,38 @@ import { collectionServices } from "../services";
 import { AxiosError, AxiosResponse } from "axios";
 
 export const useGetCollections = () => {
-  return useQuery<AxiosResponse<{ result: string }>, AxiosError, string>(
-    ["collections"],
-    {
-      queryFn: async () => collectionServices.getCollections(),
-      select(data) {
-        const result = data.data.result;
-        return result;
-      },
-    }
-  );
+  return useQuery<AxiosResponse<any>, AxiosError, any>(["collections"], {
+    queryFn: async () => collectionServices.getCollections(),
+    select(data) {
+      const result = data.data.result;
+      return result;
+    },
+  });
 };
 
-export const useGetCollectionByName = (
-  collectionName: string,
-  offset: number
-) => {
-  return useQuery<AxiosResponse<{ result: string }>, AxiosError, string>(
+export const useGetCollectionByName = ({
+  collectionName,
+  offset,
+}: {
+  collectionName?: string;
+  offset: number;
+}) => {
+  return useQuery<AxiosResponse<any>, AxiosError, any>(
     ["collections", collectionName, offset],
     {
       queryFn: async () =>
-        collectionServices.getCollectionsByName(collectionName, offset),
+        collectionServices.getCollectionsByName(collectionName!, offset),
       select(data) {
         const result = data.data.result;
         return result;
       },
+      enabled: !!collectionName,
     }
   );
 };
 
 export const useDeleteCollections = () => {
-  return useMutation<AxiosResponse<{ result: string }>, AxiosError, string>(
+  return useMutation<AxiosResponse<any>, AxiosError, any>(
     ["deleteCollections"],
     {
       mutationFn: async (collectionName: string) =>

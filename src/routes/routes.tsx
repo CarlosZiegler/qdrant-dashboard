@@ -1,7 +1,4 @@
-import Home from "../pages/Home";
-import Console from "../pages/Console";
-import Collections from "../pages/Collections";
-import Collection from "../pages/Collection";
+import { Home, Collection, Collections, Console } from "../pages";
 import { appRoutes } from "./app";
 
 export const browserRoutes = () => [

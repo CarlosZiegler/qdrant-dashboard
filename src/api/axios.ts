@@ -1,9 +1,8 @@
 import axios from "axios";
+import { envs } from "../config";
 
 const axiosInstance = axios.create({
-  ...(process.env.NODE_ENV === "development" && {
-    baseURL: "http://localhost:6333",
-  }),
+  baseURL: envs.baseURL,
 });
 
 axiosInstance.interceptors.request.use((config) => {

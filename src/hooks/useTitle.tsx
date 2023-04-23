@@ -1,7 +1,7 @@
-import React from "react";
+import { useEffect } from "react";
 
-export default function useTitle(title) {
-  React.useEffect(() => {
+export function useTitle(title: string) {
+  useEffect(() => {
     const prevTitle = document.title;
     document.title = title;
     return () => {

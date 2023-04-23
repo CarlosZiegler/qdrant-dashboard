@@ -1,6 +1,6 @@
 export const appRoutes = {
   main: "/",
   console: "/console",
-  collections: "/login",
+  collections: "/collections",
   collectionName: "/collections/:collectionName",
 };

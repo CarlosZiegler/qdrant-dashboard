@@ -15,7 +15,7 @@ function formatJSON(val: string) {
     return JSON.stringify(errorJson, null, 2);
   }
 }
-const ResultEditorWindow = ({ code }: ResultEditorWindowProps) => {
+export const ResultEditorWindow = ({ code }: ResultEditorWindowProps) => {
   return (
     <Editor
       height="82vh"
@@ -34,4 +34,3 @@ const ResultEditorWindow = ({ code }: ResultEditorWindowProps) => {
     />
   );
 };
-export default ResultEditorWindow;

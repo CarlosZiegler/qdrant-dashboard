@@ -19,7 +19,7 @@ type SidebarProps = {
   open: boolean;
 };
 
-export default function Sidebar({ open }: SidebarProps) {
+export function Sidebar({ open }: SidebarProps) {
   return (
     <>
       <Grid item xs={2}>

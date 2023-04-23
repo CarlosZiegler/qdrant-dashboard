@@ -1,6 +1,6 @@
 import { GetCodeBlocks, selectBlock } from "./config/Rules";
 import { codeParse } from "./config/RequesFromCode";
-let testCode = `GET collections
+const testCode = `GET collections
 
 PUT collections/demo1
 {
@@ -59,7 +59,7 @@ PUT collections/demo1
 
 describe("parser", () => {
   it("Should extract query blocks from code", () => {
-    let requests = GetCodeBlocks(testCode);
+    const requests = GetCodeBlocks(testCode);
     expect(requests.length).toEqual(10);
     expect(requests[1].blockStartLine).toEqual(3);
     expect(requests[1].blockEndLine).toEqual(10);
@@ -68,7 +68,7 @@ describe("parser", () => {
   });
 
   it("given an array of blocks and cursor line number: return selected block or null , if cursor is outside", () => {
-    let blocks = GetCodeBlocks(testCode);
+    const blocks = GetCodeBlocks(testCode);
 
     let block = selectBlock(blocks, 2);
 
@@ -86,7 +86,7 @@ describe("parser", () => {
   });
 
   it("given block text: convert it into request - url, body, get params", () => {
-    let blocks = GetCodeBlocks(testCode);
+    const blocks = GetCodeBlocks(testCode);
 
     // PUT collections / demo1
     // {
