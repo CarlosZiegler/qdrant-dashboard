@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import Editor from "@monaco-editor/react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import Editor, { Monaco, OnMount } from "@monaco-editor/react";
 import {
   Rules,
   options,
@@ -13,6 +13,7 @@ import { ErrorMarker, errChecker } from "./config/ErrorMarker";
 import { RequestFromCode } from "./config/RequesFromCode";
 import { ErrorNotifier } from "../ToastNotifications/ErrorNotifier";
 import "./editor.css";
+import { useHotkeys } from "@mantine/hooks";
 
 type CodeEditorWindowProps = {
   onChange: (key: string, value: string) => void;
@@ -29,7 +30,15 @@ export const CodeEditorWindow = ({
   const lensesRef = useRef<any>(null);
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  let runBtnCommandId = null;
+  const [currentCodeBlock, setCurrentCodeBlock] = useState("");
+  let runBtnCommandId: any = null;
+
+  const handleOnclick = useCallback(async () => {
+    const result: string = await RequestFromCode(currentCodeBlock);
+    onChangeResult("code", JSON.stringify(result));
+  }, [currentCodeBlock]);
+
+  useHotkeys([["ctrl+Enter", () => handleOnclick()]], ["button"], true);
 
   const handleEditorChange = (code?: string) => {
     code && onChange("code", code);
@@ -48,14 +57,14 @@ export const CodeEditorWindow = ({
     []
   );
 
-  function handleEditorDidMount(editor: any, monaco: any) {
+  const handleEditorDidMount: OnMount = (editor, monaco) => {
     editorRef.current = editor;
     let decorations: any[] = [];
-
     runBtnCommandId = editor.addCommand(
       0,
       async (_ctx: any, ...args: any) => {
         const data = args[0];
+        console.log("data", data);
         if (data === "") {
           setHasError(true);
           setErrorMessage(
@@ -109,10 +118,12 @@ export const CodeEditorWindow = ({
             },
           ]
         );
+        console.log(selectedCodeBlock);
+        setCurrentCodeBlock(selectedCodeBlock.blockText);
       }
     });
-  }
-  function handleEditorWillMount(monaco: any) {
+  };
+  function handleEditorWillMount(monaco: Monaco) {
     monacoRef.current = monaco;
     // Register Custom Language
     monaco.languages.register({ id: "custom-language" });

@@ -1,5 +1,6 @@
 import { Card, CardContent, Divider, Typography, Grid } from "@mui/material";
 import { JsonViewer } from "@textea/json-viewer";
+import { PointImage } from "./PointImage";
 
 type PointCardProps = {
   point: any;
@@ -83,9 +84,16 @@ export const PointCard = (props: PointCardProps) => {
         height: "100%",
       }}
     >
-      <CardContent>
-        <PointDataView data={point} />
-      </CardContent>
+      <Grid container spacing={2}>
+        <Grid item xs={2} m={"auto"}>
+          <PointImage data={point.payload} />
+        </Grid>
+        <Grid item xs={10} my={1}>
+          <CardContent>
+            <PointDataView data={point} />
+          </CardContent>
+        </Grid>
+      </Grid>
     </Card>
   );
 };

@@ -11,7 +11,7 @@ export var ErrorMarker = [];
 //     length: 5
 //     };
 
-let err = null;
+const err = null;
 if (err) {
   ErrorMarker.push({
     startLineNumber: err.line,
