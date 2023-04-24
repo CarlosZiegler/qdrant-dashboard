@@ -10,13 +10,14 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest --watch",
-    "test:bench": "vitest bench",
     "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "generate:types": "npx openapi-typescript \"specs/**/*.json\" --output src/interfaces/qdrant.interface.ts -t"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@mantine/hooks": "^6.0.8",
     "@monaco-editor/react": "^4.4.6",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.15",

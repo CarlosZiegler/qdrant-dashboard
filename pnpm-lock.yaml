@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@emotion/react': ^11.10.6
   '@emotion/styled': ^11.10.6
+  '@mantine/hooks': ^6.0.8
   '@monaco-editor/react': ^4.4.6
   '@mui/icons-material': ^5.11.11
   '@mui/material': ^5.11.15
@@ -37,6 +38,7 @@ specifiers:
 dependencies:
   '@emotion/react': 11.10.6_mj3jo2baq3jslihcop7oivercy
   '@emotion/styled': 11.10.6_vh4sscningxoupn6etopfj4xpy
+  '@mantine/hooks': 6.0.8_react@18.2.0
   '@monaco-editor/react': 4.5.0_biqbaboplfbrettd7655fr4n2y
   '@mui/icons-material': 5.11.16_xihlc4duomgd36w7ufdz6gz4km
   '@mui/material': 5.12.1_3xalaetzz5kb6sfo4xsrfwwhbe
@@ -525,6 +527,14 @@ packages:
   /@jridgewell/sourcemap-codec/1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
     dev: true
+
+  /@mantine/hooks/6.0.8_react@18.2.0:
+    resolution: {integrity: sha512-9N4/v1Pt9EWY22MkyZfdMvoQuvLGKui7RqsS29b23Gz1xXR/DrkIAblvLWWu/xE/xYhIpdYfufpC1mF8Y3RfNg==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@monaco-editor/loader/1.3.3:
     resolution: {integrity: sha512-6KKF4CTzcJiS8BJwtxtfyYt9shBiEv32ateQ9T4UVogwn4HM/uPo9iJd2Dmbkpz8CM6Y0PDUpjnZzCwC+eYo2Q==}

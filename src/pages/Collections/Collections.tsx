@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCollections } from "../common/client";
+import { useHotkeys } from "@mantine/hooks";
 
 import { Container, Box, Stack, Typography, Grid } from "@mui/material";
 
@@ -12,8 +12,11 @@ export function Collections() {
   const { isError, data, error, isLoading, refetch } = useGetCollections();
 
   async function getCollectionsCall() {
+    console.log("refetching");
     refetch();
   }
+
+  useHotkeys([["ctrl+Enter", () => getCollectionsCall()]]);
 
   useEffect(() => {
     setRawCollections(
@@ -44,7 +47,7 @@ export function Collections() {
               <Typography mx={3}>Error: {error?.message}</Typography>
             )}
             {isLoading && <Typography mx={3}>Loading...</Typography>}
-            {data && !isError && data.c.length === 0 && (
+            {data && !isError && data.collections.length === 0 && (
               <Typography mx={3}>No collection is present</Typography>
             )}
             {rawCollections &&
